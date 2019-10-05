@@ -20,29 +20,6 @@ public class DetailInformation extends AppCompatActivity {
         setContentView(R.layout.activity_detail_information);
 
         final ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setTextFilterEnabled(true);
-        SearchView searchView = (SearchView) findViewById(R.id.searchView);
-        searchView.setSubmitButtonEnabled(false);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
-        {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                if(TextUtils.isEmpty(newText)){
-                   listView.clearTextFilter();
-                }else{
-                    listView.setFilterText(newText);
-                }
-                return true;
-            }
-        });
 
         BaseAdapter adapter = new BaseAdapter() {
             @Override
@@ -70,5 +47,27 @@ public class DetailInformation extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
+        SearchView searchView = (SearchView) findViewById(R.id.searchView);
+        searchView.setSubmitButtonEnabled(false);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
+        {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if(TextUtils.isEmpty(newText)){
+                   listView.clearTextFilter();
+                }else{
+                    listView.setFilterText(newText);
+                }
+                return false;
+            }
+        });
     }
 }
