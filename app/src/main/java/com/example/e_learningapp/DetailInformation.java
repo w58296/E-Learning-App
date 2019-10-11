@@ -2,10 +2,13 @@ package com.example.e_learningapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -13,13 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DetailInformation extends AppCompatActivity {
-    String content[] = {"a","b","c","d","e","f"};
+    String content[] = {"course1","course2","course3","course4","course5","course6"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_information);
 
         final ListView listView = (ListView) findViewById(R.id.listView);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,content);
 
         BaseAdapter adapter = new BaseAdapter() {
             @Override
@@ -45,7 +50,16 @@ public class DetailInformation extends AppCompatActivity {
             }
         };
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(arrayAdapter);
+        listView.setTextFilterEnabled(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent getDetail = new Intent(getApplicationContext(),Detail.class);
+                getDetail.putExtra("com.example.e_learningapp.SOMETHING",i);
+                startActivity(getDetail);
+            }
+        });
 
         SearchView searchView = (SearchView) findViewById(R.id.searchView);
         searchView.setSubmitButtonEnabled(false);
@@ -66,7 +80,7 @@ public class DetailInformation extends AppCompatActivity {
                 }else{
                     listView.setFilterText(newText);
                 }
-                return false;
+                return true;
             }
         });
     }
