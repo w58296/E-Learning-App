@@ -56,7 +56,7 @@ public class DetailInformation extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent getDetail = new Intent(getApplicationContext(),Detail.class);
-                getDetail.putExtra("com.example.e_learningapp.SOMETHING",i);
+                getDetail.putExtra("com.example.e_learningapp.SOMETHING",content[i]);
                 startActivity(getDetail);
             }
         });
