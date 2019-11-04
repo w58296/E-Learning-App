@@ -10,10 +10,9 @@ import androidx.fragment.app.Fragment;
 
 public class contentFragment extends Fragment {
     String content;
-     public contentFragment(String content){
-         this.content = content;
-     }
-
+    public contentFragment(String content){
+        this.content = content;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -22,9 +21,5 @@ public class contentFragment extends Fragment {
         TextView textView = view.findViewById(R.id.textView);
         textView.setText(content);
         return view;
-    }
-
-    public void setText(String content){
-         this.content = content;
     }
 }

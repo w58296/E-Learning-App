@@ -7,8 +7,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -39,7 +37,6 @@ public class Detail extends AppCompatActivity {
         mFragment.add(new contentFragment("教学日历"));
 
 
-
         mTitle = new ArrayList<>();
         mTitle.add("课程信息");
         mTitle.add("教学大纲");
@@ -62,11 +59,9 @@ public class Detail extends AppCompatActivity {
                 return mTitle.get(position);
             }
 
-
-
         });
 
         tabLayout.setupWithViewPager(viewPager);
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(2);
     }
 }

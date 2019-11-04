@@ -69,7 +69,6 @@ public class DetailInformation extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-
                 return false;
             }
 
